@@ -13,6 +13,7 @@ export default function Home() {
             backSpeed: 100,
             loop: true,
         });
+        typed.start();
     }, []);
 
     return (

@@ -2,6 +2,30 @@ import React from "react";
 import { PAGES } from "../Portofolio";
 import Header from "./Header";
 import Seperator from "./Seperator";
+import Tooltip from "@material-ui/core/Tooltip";
+
+const frontend = [
+    { logo: "react", text: "React" },
+    { logo: "js", text: "JavaScript" },
+    { logo: "ts", text: "TypeScript" },
+    { logo: "materialui", text: "Material UI" },
+];
+
+const backend = [
+    { logo: "nodejs", text: "NodeJS" },
+    { logo: "mongodb", text: "MongoDB" },
+];
+
+const ios = [
+    { logo: "swift", text: "Swift" },
+    { logo: "xcode", text: "Xcode" },
+];
+
+const miscellaneous = [
+    { logo: "git", text: "Git" },
+    { logo: "vscode", text: "Visual Studio Code" },
+    { logo: "linux", text: "Linux" },
+];
 
 export default function About() {
     return (
@@ -50,54 +74,99 @@ export default function About() {
 
                     <div className="sub-skills">
                         <img
-                            src="assets/web-development.png"
+                            src="assets/frontend-logo.png"
                             className="image"
-                            alt="web-development"
+                            alt="frontend"
                         />
 
                         <div className="skills-content">
-                            <h5>Web Development</h5>
+                            <h5>Frontend Development</h5>
+                            <div className="logos-container">
+                                <Logos technologies={frontend} />
+                            </div>
+
                             <p>
-                                Contrary to popular belief, Lorem Ipsum is not
-                                simply random text. It has roots in a piece of
-                                classical Latin literature from 45 BC, making it
-                                over 2000 years old. Richard McClintock, a Latin
-                                professor at Hampden-Sydney College in Virginia,
-                                looked up one of the more obscure Latin words,
-                                consectetur, from a Lorem Ipsum passage, and
-                                going through the cites of the word in classical
-                                literature, discovered the undoubtable source.
-                                Lorem Ipsum comes from sections 1.10.32 and
-                                1.10.33 of "de Finibus Bonorum et Malorum"
+                                Able to equally use JavaScript and TypeScript to
+                                build a website using React together with
+                                Material UI for the styling.
                             </p>
                         </div>
                     </div>
 
                     <div className="sub-skills">
                         <img
-                            src="assets/ios-development.png"
+                            src="assets/backend-logo.png"
+                            className="image"
+                            alt="backend"
+                        />
+
+                        <div className="skills-content">
+                            <h5>Backend Development</h5>
+                            <div className="logos-container">
+                                <Logos technologies={backend} />
+                            </div>
+                            <p>
+                                Design and build backend infrastructure with
+                                REST API using NodeJS and express. Using MongoDB
+                                and Mongoose for the database system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="sub-skills">
+                        <img
+                            src="assets/ios-logo.png"
                             className="image"
                             alt="ios-development"
                         />
                         <div className="skills-content">
                             <h5>IOS App Development</h5>
+
+                            <div className="logos-container">
+                                <Logos technologies={ios} />
+                            </div>
                             <p>
-                                Contrary to popular belief, Lorem Ipsum is not
-                                simply random text. It has roots in a piece of
-                                classical Latin literature from 45 BC, making it
-                                over 2000 years old. Richard McClintock, a Latin
-                                professor at Hampden-Sydney College in Virginia,
-                                looked up one of the more obscure Latin words,
-                                consectetur, from a Lorem Ipsum passage, and
-                                going through the cites of the word in classical
-                                literature, discovered the undoubtable source.
-                                Lorem Ipsum comes from sections 1.10.32 and
-                                1.10.33 of "de Finibus Bonorum et Malorum"
+                                Developing iOS app with Swiff, Swift UI and
+                                built using Xcode
                             </p>
+                        </div>
+                    </div>
+
+                    <div className="sub-skills">
+                        <img
+                            src="assets/miscellaneous-logo.png"
+                            className="image"
+                            alt="misc"
+                        />
+
+                        <div className="skills-content">
+                            <h5>Miscellaneous Technologies</h5>
+                            <div className="logos-container">
+                                <Logos technologies={miscellaneous} />
+                            </div>
+                            <p></p>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
+    );
+}
+
+function Logos({ technologies }) {
+    return (
+        <>
+            {technologies.map((skill) => (
+                <>
+                    <Tooltip title={skill.text}>
+                        <img
+                            src={`assets/${skill.logo}-logo.png`}
+                            className="technology-logo"
+                            alt={skill.text}
+                        />
+                    </Tooltip>
+                </>
+            ))}
+        </>
     );
 }

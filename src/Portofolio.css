@@ -132,7 +132,7 @@ h6 {
     margin-bottom: 15px;
 }
 
-/* home */
+/* home ----------------------------------------------------------------- */
 .home {
     position: relative;
     width: 100%;
@@ -207,7 +207,7 @@ a.download-cv:hover {
     background: rgba(1, 1, 1, 0);
 }
 
-/* about */
+/* about ----------------------------------------------------------------- */
 .about {
     min-height: 100%;
 }
@@ -270,15 +270,18 @@ a.download-cv:hover {
 
 .about-content .skills .sub-skills {
     margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
     height: 100%;
+    background-color: rgba(20, 20, 20, 1);
 
     display: flex;
     flex-direction: row;
 }
 
 .image {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 20px;
     margin-right: 40px;
 }
@@ -288,11 +291,32 @@ a.download-cv:hover {
     text-align: justify;
 }
 
+.skills-content h5 {
+    font-size: 24px;
+    color: #aaa;
+}
+
 .skills-content p {
     font-size: 18px;
 }
 
-/* contact */
+.logos-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin: 20px 0 40px 0;
+}
+
+.technology-logo {
+    height: 70px;
+    width: 70px;
+    border-radius: 10px;
+
+    margin-right: 20px;
+}
+
+/* contact  -----------------------------------------------------------------  */
 .contact {
     position: relative;
     width: 100%;
@@ -426,6 +450,7 @@ a.download-cv:hover {
     min-height: 50px;
 }
 
+/* project ----------------------------------------------------------------- */
 .projects {
     height: 100vh;
     overflow: auto;
@@ -684,10 +709,6 @@ a.download-cv:hover {
     .home-content {
         font-size: 34px;
     }
-    .about .about-content .left img {
-        height: 350px;
-        width: 350px;
-    }
 
     .contact .contact-content {
         flex-direction: column;
@@ -804,7 +825,7 @@ a.download-cv:hover {
         flex-direction: column;
     }
     img.image {
-        display: block;
+        display: none;
         width: 60%;
         height: 60%;
         margin-right: 0;
@@ -854,6 +875,16 @@ a.download-cv:hover {
         height: 50%;
         padding: 15px;
     }
+    .skills-content h5 {
+        font-size: 20px;
+    }
+    .skills-content p {
+        font-size: 20px;
+    }
+    .technology-logo {
+        height: 50px;
+        width: 50px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -873,5 +904,16 @@ a.download-cv:hover {
     .popup-modal {
         width: 80%;
         height: 60%;
+    }
+    .skills-content h5 {
+        font-size: 16px;
+    }
+    .skills-content p {
+        font-size: 16px;
+    }
+    .technology-logo {
+        height: 40px;
+        width: 40px;
+        border-radius: 5px;
     }
 }
