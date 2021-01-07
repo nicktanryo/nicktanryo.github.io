@@ -1,11 +1,12 @@
 import React from "react";
+import { PAGES } from "../Portofolio";
 import Header from "./Header";
 import Seperator from "./Seperator";
 
 export default function About() {
     return (
         <div className="about">
-            <Header highlighted="about" />
+            <Header highlighted={PAGES.ABOUT} />
             <div className="about-content">
                 <h2 className="page-label">About Me</h2>
                 <section className="education">

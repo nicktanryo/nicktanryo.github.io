@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import { PAGES } from "../Portofolio";
 
 const userInputsInit = {
     name: "",
@@ -28,7 +29,7 @@ export default function Contact() {
 
     return (
         <div className="contact">
-            <Header highlighted="contact" />
+            <Header highlighted={PAGES.CONTACT} />
             <div className="contact-content">
                 <h2 className="page-label">Contact Me</h2>
                 <section className="message-box">

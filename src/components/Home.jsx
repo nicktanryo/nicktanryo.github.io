@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Typed from "typed.js";
 import $ from "jquery";
 import Header from "./Header";
+import { PAGES } from "../Portofolio";
 
 export default function Home() {
     useEffect(() => {
@@ -19,7 +20,7 @@ export default function Home() {
             <div className="background-image d-none"></div>
             <div className="gradient-color"></div>
 
-            <Header highlighted="home" />
+            <Header highlighted={PAGES.HOME} />
             <div className="home-content max-width">
                 <h6>Hello there, my name is</h6>
                 <h1>Nicholas Tanryo</h1>

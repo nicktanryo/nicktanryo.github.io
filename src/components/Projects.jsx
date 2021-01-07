@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PAGES } from "../Portofolio";
 
 import Header from "./Header";
 import ProjectPopup from "./ProjectPopup";
@@ -8,7 +9,7 @@ export default function Projects() {
 
     return (
         <div className="projects">
-            <Header highlighted="projects" />
+            <Header highlighted={PAGES.PROJECTS} />
             <div className="projects-content">
                 <h2 className="page-label">Projects</h2>
                 <div className="projects-container">
