@@ -27,9 +27,7 @@ $(document).ready(function () {
         $(".navbar .menu").toggleClass("active");
         $(".menu-btn i").toggleClass("active");
     });
-});
 
-document.addEventListener("DOMContentLoaded", function (event) {
     // typing text animation script
     try {
         var typed = new Typed(".typing", {
