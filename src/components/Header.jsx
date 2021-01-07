@@ -1,11 +1,12 @@
 import React from "react";
+import { PAGES } from "../Portofolio";
 
 export default function Header({ highlighted }) {
     return (
         <nav className="navbar">
             <div className="max-width">
                 <div>
-                    {highlighted === "about" && (
+                    {highlighted === PAGES.ABOUT && (
                         <a
                             className="download-cv"
                             href="/assets/Nicholas_Tanryo_CV.pdf"
@@ -18,10 +19,10 @@ export default function Header({ highlighted }) {
                 <ul className="menu">
                     <li>
                         <a
-                            href="/home"
+                            href="/#/home"
                             className={
                                 "menu-btn " +
-                                (highlighted === "home" && "highlighted")
+                                (highlighted === PAGES.HOME && "highlighted")
                             }
                         >
                             Home
@@ -29,10 +30,10 @@ export default function Header({ highlighted }) {
                     </li>
                     <li>
                         <a
-                            href="/about"
+                            href="/#/about"
                             className={
                                 "menu-btn " +
-                                (highlighted === "about" && "highlighted")
+                                (highlighted === PAGES.ABOUT && "highlighted")
                             }
                         >
                             About
@@ -40,10 +41,11 @@ export default function Header({ highlighted }) {
                     </li>
                     <li>
                         <a
-                            href="/projects"
+                            href="/#/projects"
                             className={
                                 "menu-btn " +
-                                (highlighted === "projects" && "highlighted")
+                                (highlighted === PAGES.PROJECTS &&
+                                    "highlighted")
                             }
                         >
                             Projects
@@ -51,10 +53,10 @@ export default function Header({ highlighted }) {
                     </li>
                     <li>
                         <a
-                            href="/contact"
+                            href="/#/contact"
                             className={
                                 "menu-btn " +
-                                (highlighted === "contact" && "highlighted")
+                                (highlighted === PAGES.CONTACT && "highlighted")
                             }
                         >
                             Contact

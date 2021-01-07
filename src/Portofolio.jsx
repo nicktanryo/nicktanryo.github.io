@@ -1,6 +1,4 @@
 import React from "react";
-// import Typed from "typed.js";
-// import $ from "jquery";
 import "./Portofolio.css";
 
 import {
@@ -14,6 +12,13 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+
+export const PAGES = {
+    HOME: "HOME",
+    ABOUT: "ABOUT",
+    PROJECTS: "PROJECTS",
+    CONTACT: "CONTACT",
+};
 
 export default function Portofolio() {
     return (
