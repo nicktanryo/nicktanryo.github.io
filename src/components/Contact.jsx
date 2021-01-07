@@ -11,6 +11,7 @@ const userInputsInit = {
 
 export default function Contact() {
     const [userInputs, setUserInputs] = useState(userInputsInit);
+    const [status, setStatus] = useState(undefined);
 
     function inputFieldChange(event, fieldType) {
         let text = event.target.value;
@@ -24,7 +25,28 @@ export default function Contact() {
         event.preventDefault();
         console.log(userInputs);
 
-        setUserInputs(userInputsInit);
+        const form = event.target;
+        const data = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action);
+        console.log("done 1");
+        xhr.setRequestHeader("Accept", "application/json");
+        console.log("done 2");
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return;
+            if (xhr.status === 200) {
+                form.reset();
+                console.log("success");
+                setUserInputs(userInputsInit);
+                setStatus("SUCCESS");
+            } else {
+                setStatus("ERROR");
+            }
+        };
+        console.log("done 3");
+
+        xhr.send(data);
     }
 
     return (
@@ -67,11 +89,16 @@ export default function Contact() {
                     </div>
                 </section>
                 <section className="user-form">
-                    <form onSubmit={handleSubmit}>
+                    <form
+                        onSubmit={handleSubmit}
+                        action={process.env.REACT_APP_FORM_URL}
+                        method="POST"
+                    >
                         <div className="form-components">
                             <div className="form-inputs">
                                 <input
                                     value={userInputs.name}
+                                    name="name"
                                     placeholder="NAME"
                                     onChange={(event) =>
                                         inputFieldChange(event, "name")
@@ -79,6 +106,7 @@ export default function Contact() {
                                 />
                                 <input
                                     value={userInputs.email}
+                                    name="email"
                                     placeholder="EMAIL"
                                     onChange={(event) =>
                                         inputFieldChange(event, "email")
@@ -86,6 +114,7 @@ export default function Contact() {
                                 />
                                 <input
                                     value={userInputs.subject}
+                                    name="subject"
                                     placeholder="SUBJECT"
                                     onChange={(event) =>
                                         inputFieldChange(event, "subject")
@@ -94,15 +123,24 @@ export default function Contact() {
                             </div>
                             <textarea
                                 value={userInputs.message}
+                                name="message"
                                 placeholder="MESSAGE"
                                 className="form-text-area"
                                 onChange={(event) =>
                                     inputFieldChange(event, "message")
                                 }
                             />
-                            <div className="submit-button">
+                            {/* <div className="submit-button">
                                 <button type="submit">SUBMIT</button>
-                            </div>
+                            </div> */}
+                            {status === "SUCCESS" ? (
+                                <p>Thanks!</p>
+                            ) : (
+                                <button>Submit</button>
+                            )}
+                            {status === "ERROR" && (
+                                <p>Ooops! There was an error.</p>
+                            )}
                         </div>
                     </form>
                 </section>
