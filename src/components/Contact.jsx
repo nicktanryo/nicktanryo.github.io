@@ -23,32 +23,26 @@ export default function Contact() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(userInputs);
 
         const form = event.target;
         const data = new FormData(form);
         const xhr = new XMLHttpRequest();
         xhr.open(form.method, form.action);
-        console.log("done 1");
         xhr.setRequestHeader("Accept", "application/json");
-        console.log("done 2");
 
         xhr.onreadystatechange = () => {
             if (xhr.readyState !== XMLHttpRequest.DONE) return;
             if (xhr.status === 200) {
                 form.reset();
-                console.log("success");
                 setUserInputs(userInputsInit);
                 setStatus("SUCCESS");
             } else {
                 setStatus("ERROR");
             }
         };
-        console.log("done 3");
 
         xhr.send(data);
     }
-
     return (
         <div className="contact">
             <Header highlighted={PAGES.CONTACT} />
@@ -91,7 +85,7 @@ export default function Contact() {
                 <section className="user-form">
                     <form
                         onSubmit={handleSubmit}
-                        action={process.env.REACT_APP_FORM_URL}
+                        action="https://formspree.io/f/mbjpqgnn"
                         method="POST"
                     >
                         <div className="form-components">
