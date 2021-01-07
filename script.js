@@ -29,10 +29,10 @@ $(document).ready(function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", async function (event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     // typing text animation script
     try {
-        var typed = await new Typed(".typing", {
+        var typed = new Typed(".typing", {
             strings: ["Developer", "Student"],
             typeSpeed: 120,
             backSpeed: 100,
