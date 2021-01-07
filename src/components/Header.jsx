@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import $ from "jquery";
 import { PAGES } from "../Portofolio";
 
 export default function Header({ highlighted }) {
+    useEffect(() => {
+        $(".navbar .menu li a").click(function () {
+            // applying again smooth scroll on menu items click
+            $("html").css("scrollBehavior", "smooth");
+        });
+
+        // toggle menu/navbar script
+        $(".menu-btn").click(function () {
+            $(".navbar .menu").toggleClass("active");
+            $(".menu-btn i").toggleClass("active");
+        });
+    }, []);
     return (
         <nav className="navbar">
             <div className="max-width">
