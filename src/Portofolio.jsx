@@ -4,7 +4,7 @@ import React from "react";
 import "./Portofolio.css";
 
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Switch,
     Redirect,
