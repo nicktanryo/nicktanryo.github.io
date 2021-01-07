@@ -794,7 +794,7 @@ a.download-cv:hover {
     }
     .popup-modal {
         width: 80%;
-        height: 50%;
+        height: 80%;
         padding: 40px;
     }
     .project {
@@ -839,8 +839,8 @@ a.download-cv:hover {
         font-size: larger;
     }
     .popup-modal {
-        width: 70%;
-        height: 50%;
+        /* width: 70%;
+        height: 70%; */
         padding: 30px;
     }
     .project {
@@ -871,8 +871,8 @@ a.download-cv:hover {
         font-size: 16px;
     }
     .popup-modal {
-        width: 80%;
-        height: 50%;
+        /* width: 80%;
+        height: 50%; */
         padding: 15px;
     }
     .skills-content h5 {
@@ -901,10 +901,10 @@ a.download-cv:hover {
     .project-details {
         font-size: 10px;
     }
-    .popup-modal {
+    /* .popup-modal {
         width: 80%;
         height: 60%;
-    }
+    } */
     .skills-content h5 {
         font-size: 16px;
     }
