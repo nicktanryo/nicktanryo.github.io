@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.f11c273a.chunk.css",
+    "main.css": "/static/css/main.cc0ee0c9.chunk.css",
     "main.js": "/static/js/main.edbcb029.chunk.js",
     "main.js.map": "/static/js/main.edbcb029.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ab519695.js",
@@ -8,14 +8,14 @@
     "static/js/2.9400556e.chunk.js": "/static/js/2.9400556e.chunk.js",
     "static/js/2.9400556e.chunk.js.map": "/static/js/2.9400556e.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.f11c273a.chunk.css.map": "/static/css/main.f11c273a.chunk.css.map",
+    "static/css/main.cc0ee0c9.chunk.css.map": "/static/css/main.cc0ee0c9.chunk.css.map",
     "static/js/2.9400556e.chunk.js.LICENSE.txt": "/static/js/2.9400556e.chunk.js.LICENSE.txt",
     "static/media/Portofolio.css": "/static/media/todoapp-logo.1a9fae11.png"
   },
   "entrypoints": [
     "static/js/runtime-main.ab519695.js",
     "static/js/2.9400556e.chunk.js",
-    "static/css/main.f11c273a.chunk.css",
+    "static/css/main.cc0ee0c9.chunk.css",
     "static/js/main.edbcb029.chunk.js"
   ]
 }
