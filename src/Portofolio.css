@@ -366,6 +366,13 @@ a.download-cv:hover {
     flex-direction: column;
 }
 
+.contact .contact-content .user-form .form-components .form-inputs {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
 .contact .contact-content .user-form .form-components input,
 .contact .contact-content .user-form .form-components textarea,
 .contact .contact-content .user-form .form-components button {
@@ -407,6 +414,10 @@ a.download-cv:hover {
 .contact .contact-content .user-form .form-components .form-inputs {
     display: flex;
     justify-content: space-between;
+}
+
+.contact .contact-content .user-form .form-components .form-inputs input {
+    width: 210px;
 }
 
 .contact .contact-content .user-form .form-components .form-text-area {
@@ -656,7 +667,9 @@ a.download-cv:hover {
         height: 250px;
         width: 250px;
     }
-    .project-title {
+    .contact .contact-content .user-form .form-components input {
+        width: 50%;
+        font-size: 14px;
     }
 }
 
@@ -751,12 +764,6 @@ a.download-cv:hover {
         margin: 0;
     }
 
-    .contact .contact-content .user-form .form-inputs {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
     .home .background {
         background-image: -webkit-linear-gradient(
             15deg,
@@ -772,6 +779,16 @@ a.download-cv:hover {
     .project {
         height: 225px;
         width: 225px;
+    }
+}
+
+@media (max-width: 810px) {
+    .contact .contact-content .user-form .form-components .form-inputs {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .contact .contact-content .user-form .form-components .form-inputs input {
+        width: 100%;
     }
 }
 
