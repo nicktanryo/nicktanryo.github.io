@@ -56,7 +56,7 @@ export default function Contact() {
                     </p>
                     <div className="email-box">
                         <i className="fas fa-envelope-square"></i>
-                        <span>nicholas.tanryo22022@gmail.com</span>
+                        <span>nicholas.tanryo@gmail.com</span>
                     </div>
                     <div className="logos">
                         <a
