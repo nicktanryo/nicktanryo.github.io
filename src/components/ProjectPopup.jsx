@@ -3,6 +3,13 @@ import ReactDom from "react-dom";
 import Seperator from "./Seperator";
 
 const PROJECTS = {
+    "money-sharing-app": {
+        name: "Money Sharing App",
+        technologies: "React | Bootstrap | Router",
+        imageUrl: "./assets/money-sharing-app-preview.png",
+        sourceCode: null,
+        liveDemo: "http://moneyshareapp.herokuapp.com/",
+    },
     "ride-sharing-system": {
         name: "Ride Sharing System",
         technologies: "MySQL | Java | Git",
@@ -44,25 +51,12 @@ const PROJECTS = {
 export default function ProjectPopup({ projectSelected, onClose }) {
     let projectSelectedIsNone = projectSelected === "NONE";
 
-    const { name, technologies, imageUrl, sourceCode, liveDemo } = PROJECTS[
-        projectSelected
-    ];
+    const { name, technologies, imageUrl, sourceCode, liveDemo } = PROJECTS[projectSelected];
 
     return ReactDom.createPortal(
         <>
-            <div
-                className={
-                    "popup-overlay " +
-                    (!projectSelectedIsNone ? "show-overlay" : "")
-                }
-                onClick={onClose}
-            />
-            <div
-                className={
-                    "popup-modal " +
-                    (!projectSelectedIsNone ? "show-popup" : "")
-                }
-            >
+            <div className={"popup-overlay " + (!projectSelectedIsNone ? "show-overlay" : "")} onClick={onClose} />
+            <div className={"popup-modal " + (!projectSelectedIsNone ? "show-popup" : "")}>
                 <i className="fas fa-times cross-button" onClick={onClose}></i>
                 <div className="project-details">
                     <div className="project-description">
@@ -75,24 +69,20 @@ export default function ProjectPopup({ projectSelected, onClose }) {
                     </div>
                     <div className="project-links">
                         <p>
-                            <i className="fas fa-link"></i>{" "}
-                            <a
-                                href={sourceCode}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                {sourceCode}
-                            </a>
+                            {sourceCode && (
+                                <>
+                                    <i className="fas fa-link"></i>{" "}
+                                    <a href={sourceCode} target="_blank" rel="noreferrer">
+                                        {sourceCode}
+                                    </a>
+                                </>
+                            )}
                         </p>
                         <p>
                             {liveDemo && (
                                 <>
                                     <i className="fas fa-broadcast-tower"></i>{" "}
-                                    <a
-                                        href={liveDemo}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
+                                    <a href={liveDemo} target="_blank" rel="noreferrer">
                                         {liveDemo}
                                     </a>
                                 </>

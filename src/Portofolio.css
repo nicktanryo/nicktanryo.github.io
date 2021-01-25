@@ -161,11 +161,7 @@ h6 {
     top: 0;
     left: 0;
 
-    background-image: -webkit-linear-gradient(
-        45deg,
-        rgba(18, 18, 18, 0) 0%,
-        #090909 60%
-    );
+    background-image: -webkit-linear-gradient(45deg, rgba(18, 18, 18, 0) 0%, #090909 60%);
     background-repeat: no-repeat;
     background-position: top left;
     background-size: cover;
@@ -481,7 +477,8 @@ a.download-cv:hover {
     position: relative;
     height: 300px;
     width: 300px;
-    background-color: rgba(200, 200, 200, 0.7);
+    /* background-color: rgba(200, 200, 200, 0.7); */
+    background-color: black;
 
     border: 0.5px solid white;
     border-radius: 20px;
@@ -521,6 +518,11 @@ a.download-cv:hover {
     text-align: center;
 }
 
+.money-sharing-app {
+    background-image: url("./assets/money-sharing-app-logo.png");
+    background-size: cover;
+    background-position: center;
+}
 .ride-sharing-system {
     background-image: url("./assets/ride-sharing-system-logo.png");
     background-size: cover;
@@ -786,11 +788,7 @@ a.download-cv:hover {
     }
 
     .home .background {
-        background-image: -webkit-linear-gradient(
-            15deg,
-            rgba(1, 1, 1, 0) 20%,
-            var(--background-color) 80%
-        );
+        background-image: -webkit-linear-gradient(15deg, rgba(1, 1, 1, 0) 20%, var(--background-color) 80%);
     }
     .popup-modal {
         width: 80%;
