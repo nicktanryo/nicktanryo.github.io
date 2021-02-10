@@ -48,7 +48,7 @@ export default function About() {
                                     Kong
                                 </h5>
                                 <h6>Major: Computer Science</h6>
-                                <h6>CGPA : 3.5 / 4.0</h6>
+                                <h6>CGPA : 3.4 / 4.0</h6>
                             </div>
                         </div>
                     </div>
