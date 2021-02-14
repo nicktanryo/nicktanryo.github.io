@@ -26,7 +26,7 @@ export default function Home() {
                 <h6>Hello there, my name is</h6>
                 <h1>Nicholas Tanryo</h1>
                 <h3>
-                    And I'm a <span className="typing"></span>
+                    <span className="typing"></span>
                 </h3>
             </div>
         </div>
