@@ -1,172 +1,81 @@
 import React from "react";
-import { PAGES } from "../Portofolio";
-import Header from "./Header";
-import Seperator from "./Seperator";
-import Tooltip from "@material-ui/core/Tooltip";
+import styles from "../styles/About.module.scss";
 
-const frontend = [
-    { logo: "react", text: "React" },
-    { logo: "js", text: "JavaScript" },
-    { logo: "ts", text: "TypeScript" },
-    { logo: "materialui", text: "Material UI" },
-];
+function About() {
+	return (
+		<section id="about" className={styles.about}>
+			<h3>About Me</h3>
 
-const backend = [
-    { logo: "nodejs", text: "NodeJS" },
-    { logo: "mongodb", text: "MongoDB" },
-];
-
-const ios = [
-    { logo: "swift", text: "Swift" },
-    { logo: "xcode", text: "Xcode" },
-];
-
-const miscellaneous = [
-    { logo: "git", text: "Git" },
-    { logo: "vscode", text: "Visual Studio Code" },
-    { logo: "linux", text: "Linux" },
-];
-
-export default function About() {
-    return (
-        <div className="about">
-            <Header highlighted={PAGES.ABOUT} />
-            <div className="about-content">
-                <h2 className="page-label">About Me</h2>
-                <section className="education">
-                    <h3 style={{ textDecoration: "underline" }}>Education</h3>
-                    <div className="sub-education">
-                        <span className="education-duration">
-                            2018 - Present
-                        </span>
-
-                        <div className="education-content-container">
-                            <div className="progress-line"></div>
-                            <div className="education-content">
-                                <h5>
-                                    The Chinese University of Hong Kong - Hong
-                                    Kong
-                                </h5>
-                                <h6>Major: Computer Science</h6>
-                                <h6>CGPA : 3.4 / 4.0</h6>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="sub-education">
-                        <span className="education-duration">2015 - 2018</span>
-
-                        <div className="education-content-container">
-                            <div className="progress-line"></div>
-                            <div className="education-content">
-                                <h5>SMA Sutomo 1 - Medan, Indonesia</h5>
-                                <h6>Concentration: Science</h6>
-                                <h6>Grade : 93.5 / 100</h6>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <Seperator />
-
-                <section className="skills">
-                    <h3 style={{ textDecoration: "underline" }}>Skills</h3>
-
-                    <div className="sub-skills">
-                        <img
-                            src="assets/frontend-logo.png"
-                            className="image"
-                            alt="frontend"
-                        />
-
-                        <div className="skills-content">
-                            <h5>Frontend Development</h5>
-                            <div className="logos-container">
-                                <Logos technologies={frontend} />
-                            </div>
-
-                            <p>
-                                Able to equally use JavaScript and TypeScript to
-                                build a website using React together with
-                                Material UI for the styling.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="sub-skills">
-                        <img
-                            src="assets/backend-logo.png"
-                            className="image"
-                            alt="backend"
-                        />
-
-                        <div className="skills-content">
-                            <h5>Backend Development</h5>
-                            <div className="logos-container">
-                                <Logos technologies={backend} />
-                            </div>
-                            <p>
-                                Design and build backend infrastructure with
-                                REST API using NodeJS and express. Using MongoDB
-                                and Mongoose for the database system.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="sub-skills">
-                        <img
-                            src="assets/ios-logo.png"
-                            className="image"
-                            alt="ios-development"
-                        />
-                        <div className="skills-content">
-                            <h5>IOS App Development</h5>
-
-                            <div className="logos-container">
-                                <Logos technologies={ios} />
-                            </div>
-                            <p>
-                                Developing iOS app with Swiff, Swift UI and
-                                built using Xcode
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="sub-skills">
-                        <img
-                            src="assets/miscellaneous-logo.png"
-                            className="image"
-                            alt="misc"
-                        />
-
-                        <div className="skills-content">
-                            <h5>Miscellaneous Technologies</h5>
-                            <div className="logos-container">
-                                <Logos technologies={miscellaneous} />
-                            </div>
-                            <p></p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    );
+			<div className={`${styles.education} ${styles.subContainer}`}>
+				<h2 className={styles.categoryName}>Education</h2>
+				<div className={styles.educationContainer}>
+					<CardItem
+						logo="cuhk.jpg"
+						title="The Chinese University of Hong Kong"
+						subtitle="Computer Science"
+						tags={[
+							"Building Web Application",
+							"Software Engineering",
+							"Database System",
+							"Design and Analysis of Algorithm",
+							"Principle of Programming Language",
+							"Machine Learning",
+						]}
+					>
+						<h6>Awards:</h6>
+						<ul>
+							<li>CUHK University Admission Full Scholarship</li>
+							<li>Faculty of Engineering Admission Scholarship</li>
+							<li>CUHK Honours at Entrance</li>
+							<li>Chung Chi College In Class Scholarship</li>
+						</ul>
+					</CardItem>
+				</div>
+			</div>
+			<div className={`${styles.technicalSkills} ${styles.subContainer}`}>
+				<h2 className={styles.categoryName}>Technical Skills</h2>
+				<div className={styles.technicalSkillsContainer}>
+					<CardItem logo="frontend-logo.svg" title="Frontend Development" tags={["HTML", "CSS", "JavaScript"]}>
+						Able to use Markup language to build web pages and with the help of stylesheet and JavaScript to make websites more interactive.
+					</CardItem>
+					<CardItem logo="javascript-framework-logo.png" title="JavaScript Frameworks" tags={["React", "TypeScript", "Material UI"]}>
+						Using JavaScript library and TypeScript to create more complicated pages that require state management and safer development.
+					</CardItem>
+					<CardItem logo="backend-logo.png" title="Backend Development" tags={["JavaScript", "NodeJS", "Express", "MongoDB", "MySQL"]}>
+						Build REST API backend infrastructure using NodeJS and Express with either SQL or NoSQL database system for persistent data storage.
+					</CardItem>
+					<CardItem logo="data-analysis-logo.png" title="Data Analysis" tags={["Python", "Pandas", "Matplotlib", "Scikit Learn"]}>
+						Find and identify pattern in data using python libraries and visualize it for conclusion or further analysis.
+					</CardItem>
+				</div>
+			</div>
+		</section>
+	);
 }
 
-function Logos({ technologies }) {
-    return (
-        <>
-            {technologies.map((skill) => (
-                <>
-                    <Tooltip title={skill.text}>
-                        <img
-                            src={`assets/${skill.logo}-logo.png`}
-                            className="technology-logo"
-                            alt={skill.text}
-                        />
-                    </Tooltip>
-                </>
-            ))}
-        </>
-    );
+export default About;
+
+function CardItem({ logo, title, subtitle, children, tags }) {
+	return (
+		<div className={styles.card}>
+			<div className={styles.cardHeader}>
+				<img className={styles.cardLogo} src={`assets/about/${logo}`} alt={title} />
+				<div className={styles.cardTitles}>
+					<span className={styles.cardTitle}>{title}</span>
+					{subtitle && <span className={styles.subtitle}>{subtitle}</span>}
+				</div>
+			</div>
+			<div className={styles.cardBody}>{children}</div>
+			<div className={styles.tagsContainer}>
+				{tags &&
+					tags.map((tag) => {
+						return (
+							<span key={tag} className={styles.tag}>
+								{tag}
+							</span>
+						);
+					})}
+			</div>
+		</div>
+	);
 }

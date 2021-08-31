@@ -1,0 +1,13 @@
+.footer {
+	padding: 20px var(--global-side-padding);
+
+	background-color: var(--global-color-blue-tint);
+	color: var(--global-color-blue-dark);
+
+	font-size: 1.2em;
+	font-weight: 600;
+
+	a {
+		text-decoration: none;
+	}
+}

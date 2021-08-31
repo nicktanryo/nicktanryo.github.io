@@ -1,0 +1,239 @@
+.about {
+	min-height: 100vh;
+
+	background-image: url("../assets/wave-haikei.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	padding: 60px var(--global-side-padding);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 50px;
+	font-size: 2em;
+	font-weight: 500;
+
+	.card {
+		--card-padding: 25px;
+		width: calc(100% - 2 * var(--card-padding));
+
+		padding: var(--card-padding);
+		border-radius: 10px;
+		background-color: rgba(181, 213, 255, 1);
+
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		gap: var(--card-padding);
+
+		font-size: 1.1em;
+
+		.cardHeader {
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			min-height: 30px;
+			// gap: 20px;
+
+			font-size: 0.6em;
+
+			.cardLogo {
+				height: 30px;
+				border-radius: 7px;
+				margin-right: 0.5em;
+			}
+
+			.cardTitles {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+
+				// white-space: nowrap;
+
+				.cardTitle {
+					font-weight: 400;
+					color: var(--global-color-blue-dark);
+				}
+
+				.subtitle {
+					font-size: 0.9em;
+					color: rgba(125, 134, 150, 1);
+
+					&::before {
+						content: "\2022";
+						margin-left: 0.5rem;
+						margin-right: 0.5rem;
+						font-weight: 400;
+					}
+				}
+			}
+		}
+
+		.cardBody {
+			width: 100%;
+			font-size: 1em;
+			color: var(--global-color-blue-dark);
+		}
+
+		.tagsContainer {
+			width: 100%;
+
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			flex-wrap: wrap;
+			gap: 5px;
+
+			font-size: 0.8em;
+
+			.tag {
+				display: inline-block;
+				font-size: 0.5em;
+
+				padding: 5px 10px;
+				// background-color: rgba(151, 183, 225, 1);
+				color: white;
+				background-color: var(--global-color-blue);
+				// color: var(--global-text-primary);
+				border-radius: 7px;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+
+	.subContainer {
+		width: 100%;
+		max-width: 1400px;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		gap: 30px;
+
+		.categoryName {
+			font-size: 1.2em;
+			font-weight: 400;
+		}
+	}
+
+	.educationContainer {
+		width: 100%;
+
+		.card {
+			.cardBody {
+				h6 {
+					font-size: 0.5em;
+				}
+
+				ul {
+					padding-left: 10px;
+					li {
+						list-style: none;
+						font-size: 0.5em;
+
+						&::before {
+							content: "\21D2";
+							padding-right: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.technicalSkillsContainer {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-content: center;
+		flex-wrap: wrap;
+		gap: 40px;
+
+		.card {
+			width: calc(calc(100% - 40px) / 2 - 50px);
+
+			.cardBody {
+				font-size: 0.5em;
+				font-weight: 400;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.about {
+		.card {
+			--card-padding: 20px;
+
+			.cardHeader {
+				.cardTitle {
+					font-size: 0.9em;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.about {
+		.educationContainer .card {
+			.cardHeader {
+				.cardLogo {
+					height: 50px;
+				}
+
+				.cardTitles {
+					flex-direction: column;
+					align-items: flex-start;
+
+					.cardTitle {
+					}
+
+					.subtitle {
+						&::before {
+							display: none;
+						}
+					}
+				}
+			}
+
+			.cardBody {
+			}
+
+			.tagsContainer {
+			}
+		}
+
+		.technicalSkillsContainer {
+			flex-direction: column;
+
+			.card {
+				width: calc(100% - 50px);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.about {
+		.card {
+			--card-padding: 15px;
+			font-size: 0.9em;
+		}
+
+		.subContainer {
+			.categoryName {
+				font-size: 0.9em;
+			}
+		}
+	}
+}

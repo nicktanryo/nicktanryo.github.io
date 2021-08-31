@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+	--global-color-blue: rgba(0, 50, 170, 1);
+	--global-color-blue-dark: rgba(0, 25, 77, 1);
+	--global-color-blue-light: rgba(0, 123, 252, 1);
+	--global-color-blue-tint: rgb(29, 230, 203);
+	--global-color-blue-green: rgba(0, 182, 111, 1);
+
+	--global-text-primary: rgba(200, 233, 248, 1);
+	--global-text-secondary: rgba(109, 248, 123, 1);
+
+	--global-max-content-width: 2000px;
+	--global-side-padding: 50px;
+
+	--global-background-color: black;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	min-width: 300px;
+	width: 100%;
+	background-color: var(--global-background-color);
+
+	font-family: "Noto Sans JP", sans-serif;
+	font-size: 16px;
+	color: var(--global-text-primary);
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+section:not(:first-of-type) {
+	position: relative;
+	&::before {
+		content: "";
+		height: 2px;
+		border-radius: 1px;
+		width: 90%;
+		background-color: var(--global-text-primary);
+		position: absolute;
+		transform: translate(-50%, 0);
+		top: 0;
+		left: 50%;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	:root {
+		--global-side-padding: 20px;
+	}
+}

@@ -1,144 +1,180 @@
 import React, { useState } from "react";
-import Header from "./Header";
-import { PAGES } from "../Portofolio";
+import styles from "../styles/Contact.module.scss";
 
-const userInputsInit = {
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+const initialFormInputs = {
+	name: "",
+	email: "",
+	subject: "",
+	message: "",
 };
 
-export default function Contact() {
-    const [userInputs, setUserInputs] = useState(userInputsInit);
-    const [status, setStatus] = useState(undefined);
+const FORM_RESPONSE = {
+	SUCCESS: {
+		success: true,
+		error: false,
+		message: "MESSAGE SENT",
+	},
+	ERROR: {
+		success: false,
+		error: true,
+		message: "FAILED TO SEND MESSAGE",
+	},
+};
 
-    function inputFieldChange(event, fieldType) {
-        let text = event.target.value;
-        setUserInputs((prevUserInputs) => ({
-            ...prevUserInputs,
-            [fieldType]: text,
-        }));
-    }
+const INIT_FORM_RESPONSE = {
+	success: null,
+	error: null,
+	message: null,
+};
 
-    function handleSubmit(event) {
-        event.preventDefault();
+function Contact() {
+	const [form, setForm] = useState(initialFormInputs);
+	const [buttonIsLoading, setButtonIsLoading] = useState(false);
+	const [formAfterSubmitMessage, setFormAfterSubmitMessage] = useState(INIT_FORM_RESPONSE);
 
-        const form = event.target;
-        const data = new FormData(form);
-        const xhr = new XMLHttpRequest();
-        xhr.open(form.method, form.action);
-        xhr.setRequestHeader("Accept", "application/json");
+	function onChangeFormInput(event, type) {
+		setForm((form) => {
+			return { ...form, [type]: event.target.value };
+		});
+	}
 
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState !== XMLHttpRequest.DONE) return;
-            if (xhr.status === 200) {
-                form.reset();
-                setUserInputs(userInputsInit);
-                setStatus("SUCCESS");
-            } else {
-                setStatus("ERROR");
-            }
-        };
+	async function onSubmitForm(event) {
+		setButtonIsLoading(true);
+		event.preventDefault();
 
-        xhr.send(data);
-    }
-    return (
-        <div className="contact">
-            <Header highlighted={PAGES.CONTACT} />
-            <div className="contact-content">
-                <h2 className="page-label">Contact Me</h2>
-                <section className="message-box">
-                    <h3>GET IN TOUCH</h3>
-                    <p>
-                        Feel free to contact me. I am open to any discussion,
-                        ideas and work oppurtunities.
-                    </p>
-                    <div className="email-box">
-                        <i className="fas fa-envelope-square"></i>
-                        <span>nicholas.tanryo@gmail.com</span>
-                    </div>
-                    <div className="logos">
-                        <a
-                            href="https://www.facebook.com/nicktanryo/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <i className="fab fa-facebook-square"></i>
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/nicholas-tanryo-bb6b5219a/"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <i className="fab fa-linkedin"></i>
-                        </a>
-                        <a
-                            href="https://github.com/nicktanryo"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <i className="fab fa-github-square"></i>
-                        </a>
-                    </div>
-                </section>
-                <section className="user-form">
-                    <form
-                        onSubmit={handleSubmit}
-                        action="https://formspree.io/f/mbjpqgnn"
-                        method="POST"
-                    >
-                        <div className="form-components">
-                            <div className="form-inputs">
-                                <input
-                                    value={userInputs.name}
-                                    name="name"
-                                    placeholder="NAME"
-                                    onChange={(event) =>
-                                        inputFieldChange(event, "name")
-                                    }
-                                />
-                                <input
-                                    value={userInputs.email}
-                                    name="email"
-                                    placeholder="EMAIL"
-                                    onChange={(event) =>
-                                        inputFieldChange(event, "email")
-                                    }
-                                />
-                                <input
-                                    value={userInputs.subject}
-                                    name="subject"
-                                    placeholder="SUBJECT"
-                                    onChange={(event) =>
-                                        inputFieldChange(event, "subject")
-                                    }
-                                />
-                            </div>
-                            <textarea
-                                value={userInputs.message}
-                                name="message"
-                                placeholder="MESSAGE"
-                                className="form-text-area"
-                                onChange={(event) =>
-                                    inputFieldChange(event, "message")
-                                }
-                            />
-                            {/* <div className="submit-button">
-                                <button type="submit">SUBMIT</button>
-                            </div> */}
-                            {status === "SUCCESS" ? (
-                                <p>Thanks!</p>
-                            ) : (
-                                <button>Submit</button>
-                            )}
-                            {status === "ERROR" && (
-                                <p>Ooops! There was an error.</p>
-                            )}
-                        </div>
-                    </form>
-                </section>
-            </div>
-        </div>
-    );
+		let data = new FormData(event.target);
+
+		fetch(event.target.action, {
+			method: "POST",
+			body: data,
+			headers: {
+				Accept: "application/json",
+			},
+		})
+			.then((response) => {
+				if (response.status === 200) {
+					setFormAfterSubmitMessage(FORM_RESPONSE.SUCCESS);
+					setForm(initialFormInputs);
+				} else {
+					throw new Error();
+				}
+			})
+			.catch((error) => {
+				setFormAfterSubmitMessage(FORM_RESPONSE.ERROR);
+			})
+			.finally(() => {
+				setButtonIsLoading(false);
+				setTimeout(() => {
+					setFormAfterSubmitMessage(INIT_FORM_RESPONSE);
+				}, 2000);
+			});
+	}
+
+	return (
+		<section id="contact" className={styles.contact}>
+			<h2 className={styles.header}>Contact Me</h2>
+			<span className={styles.contactMessage}>
+				Feel free to contact me at &nbsp;
+				<a href="mailto: nicholas.tanryo@gmail.com" className={styles.email}>
+					nicholas.tanryo@gmail.com
+				</a>
+				&nbsp; or message me
+			</span>
+			<form className={styles.contactForm} onSubmit={onSubmitForm} action="https://formspree.io/f/moqyyqbw" method="POST">
+				<div className={styles.formInputs}>
+					<input
+						autoComplete="off"
+						type="text"
+						placeholder="Name"
+						name="name"
+						className={styles.formInput}
+						value={form.name}
+						onChange={(event) => onChangeFormInput(event, "name")}
+					/>
+					<input
+						autoComplete="off"
+						type="email"
+						placeholder="Email"
+						name="email"
+						className={styles.formInput}
+						value={form.email}
+						onChange={(event) => onChangeFormInput(event, "email")}
+					/>
+					<input
+						autoComplete="off"
+						type="text"
+						placeholder="Subject"
+						name="subject"
+						className={styles.formInput}
+						value={form.subject}
+						onChange={(event) => onChangeFormInput(event, "subject")}
+					/>
+				</div>
+
+				<textarea
+					placeholder="Message"
+					name="message"
+					rows="10"
+					className={styles.formMessage}
+					value={form.message}
+					onChange={(event) => onChangeFormInput(event, "message")}
+				/>
+
+				<button
+					type="submit"
+					className={`
+						${styles.formButton} 
+						${buttonIsLoading ? styles.isLoading : ""}
+						${formAfterSubmitMessage.success ? styles.success : ""} 
+						${formAfterSubmitMessage.error ? styles.error : ""}`}
+					disabled={buttonIsLoading || formAfterSubmitMessage.error || formAfterSubmitMessage.success}
+				>
+					<FormButtonContent isLoading={buttonIsLoading} formResponse={formAfterSubmitMessage} />
+				</button>
+			</form>
+		</section>
+	);
+}
+
+export default Contact;
+
+function FormButtonContent({ isLoading, formResponse }) {
+	if (isLoading) {
+		return <LoadingCircle />;
+	} else if (formResponse.success || formResponse.error) {
+		if (formResponse.success) {
+			return <SuccessButtonContent message={formResponse.message} />;
+		} else {
+			return <ErrorButtonContent message={formResponse.message} />;
+		}
+	} else {
+		return (
+			<>
+				<span>SEND MESSAGE</span>
+				<i className="fas fa-paper-plane"></i>
+			</>
+		);
+	}
+}
+
+function LoadingCircle() {
+	return <span className={styles.loader}></span>;
+}
+
+function SuccessButtonContent({ message }) {
+	return (
+		<>
+			<span>{message}</span>
+			<i className="fas fa-check"></i>
+		</>
+	);
+}
+
+function ErrorButtonContent({ message }) {
+	return (
+		<>
+			<span>{message}</span>
+			<i className="fas fa-times"></i>
+		</>
+	);
 }

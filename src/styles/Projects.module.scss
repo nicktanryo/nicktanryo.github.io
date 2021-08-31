@@ -1,0 +1,235 @@
+.projects {
+	min-height: 100vh;
+
+	background-image: url("../assets/stacked-waves-haikei.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	padding: 4em 0;
+
+	.subHeader {
+		font-size: 2em;
+	}
+
+	.cardsContainer {
+		width: 100%;
+		padding: var(--global-side-padding) 0;
+
+		display: grid;
+		grid-template-columns: auto auto auto;
+		grid-template-rows: auto auto;
+		grid-gap: 40px;
+		justify-content: center;
+
+		.blankCard {
+			visibility: hidden;
+		}
+
+		.card {
+			--card-width: 350px;
+
+			width: var(--card-width);
+			height: 431px;
+
+			border-radius: 20px;
+			// cursor: pointer;
+
+			background-color: var(--global-background-color);
+			overflow: hidden;
+
+			position: relative;
+
+			.imageContainer {
+				width: 100%;
+				height: auto;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				padding: 2ch 0;
+
+				.projectLogo {
+					width: calc(100% - 4ch);
+				}
+			}
+
+			.cardContent {
+				position: absolute;
+				top: 0;
+
+				height: 100%;
+				background-color: var(--global-background-color);
+
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+
+				position: relative;
+				transition: 0.2s ease-in-out;
+
+				.projectTitle {
+					margin: 1.55ch;
+				}
+
+				.projectDescription {
+					width: calc(100% - 4ch);
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					gap: 1ch;
+
+					.projectLinks {
+						height: 30px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						gap: 20px;
+
+						& > a {
+							padding: 5px 10px;
+							border-radius: 10px;
+							background-color: var(--global-text-primary);
+							color: var(--global-color-blue-dark);
+							text-decoration: none;
+						}
+
+						.seperator {
+							height: 100%;
+							border: 2px solid var(--global-color-blue-light);
+						}
+					}
+
+					.description {
+						width: 100%;
+						.projectPreview {
+							width: 100%;
+							border-radius: 5px;
+						}
+					}
+
+					.projectTags {
+						display: flex;
+						justify-content: flex-start;
+						flex-wrap: wrap;
+						gap: 10px;
+
+						.projectTag {
+							padding: 5px 10px;
+							background-color: var(--global-color-blue-light);
+							border-radius: 10px;
+						}
+					}
+				}
+
+				&::before {
+					content: "";
+					position: absolute;
+					transform: translate(-50%);
+					top: 0;
+					left: 50%;
+					height: 3px;
+					width: 80%;
+					background-color: var(--global-color-blue-light);
+				}
+			}
+
+			&:hover .cardContent {
+				transform: translateY(calc(-1 * var(--card-width)));
+
+				.projectTitle {
+					color: var(--global-color-blue-light);
+				}
+
+				&::before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@media (hover: none) {
+		.cardContent {
+			transform: translateY(calc(-1 * var(--card-width)));
+
+			.projectTitle {
+				color: var(--global-color-blue-light);
+			}
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 1200px) {
+		.cardsContainer {
+			grid-template-columns: auto auto;
+			grid-template-rows: auto auto auto;
+		}
+	}
+
+	@media only screen and (max-width: 900px) {
+		.cardsContainer {
+			.card {
+				--card-width: 320px;
+				height: 410px;
+
+				@media (hover) {
+					.projectDescription {
+						visibility: hidden;
+					}
+
+					&:hover {
+						.projectDescription {
+							visibility: visible;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media only screen and (max-width: 800px) {
+		.cardsContainer {
+			grid-template-columns: auto auto;
+			grid-template-rows: auto auto auto;
+
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	@media only screen and (max-width: 700px) {
+		.cardsContainer {
+			grid-template-columns: auto;
+			grid-template-rows: auto auto auto auto auto;
+
+			padding-left: 0;
+			padding-right: 0;
+
+			.card {
+				--card-width: 350px;
+				height: 431px;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 400px) {
+		.card {
+			--card-width: 300px !important;
+		}
+	}
+
+	@media only screen and (max-width: 300px) {
+		.card {
+			border-radius: 0 !important;
+		}
+	}
+}

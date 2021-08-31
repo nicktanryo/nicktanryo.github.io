@@ -1,59 +1,64 @@
-import React, { useEffect } from "react";
-import $ from "jquery";
-import { PAGES } from "../Portofolio";
+import React, { useEffect, useState } from "react";
+import styles from "../styles/Header.module.scss";
 
-export default function Header({ highlighted }) {
-    useEffect(() => {
-        $(".navbar .menu li a").click(function () {
-            // applying again smooth scroll on menu items click
-            $("html").css("scrollBehavior", "smooth");
-        });
+function Header() {
+	const [showSidebar, setShowSidebar] = useState(false);
 
-        // toggle menu/navbar script
-        $(".menu-btn").click(function () {
-            $(".navbar .menu").toggleClass("active");
-            $(".menu-btn i").toggleClass("active");
-        });
-    }, []);
-    return (
-        <nav className="navbar">
-            <div className="max-width">
-                <div>
-                    {highlighted === PAGES.ABOUT && (
-                        <a className="download-cv" href="/assets/NicholasTanryo.pdf" download>
-                            Download CV
-                        </a>
-                    )}
-                </div>
-                <ul className="menu">
-                    <li>
-                        <a href="/#/home" className={"menu-btn " + (highlighted === PAGES.HOME && "highlighted")}>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/#/about" className={"menu-btn " + (highlighted === PAGES.ABOUT && "highlighted")}>
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/#/projects"
-                            className={"menu-btn " + (highlighted === PAGES.PROJECTS && "highlighted")}
-                        >
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/#/contact" className={"menu-btn " + (highlighted === PAGES.CONTACT && "highlighted")}>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-                <div className="menu-btn">
-                    <i className="fas fa-bars"></i>
-                </div>
-            </div>
-        </nav>
-    );
+	function handleHeaderBackground() {
+		let header = document.getElementById("header");
+
+		if (window.scrollY === 0) {
+			header.style.backgroundColor = "transparent";
+		} else {
+			header.style.backgroundColor = "var(--global-background-color)";
+		}
+	}
+
+	function toggleSidebar() {
+		setShowSidebar((showSidebar) => !showSidebar);
+	}
+
+	useEffect(() => {
+		handleHeaderBackground();
+
+		window.addEventListener("scroll", handleHeaderBackground);
+
+		return () => {
+			window.removeEventListener("scroll", handleHeaderBackground);
+		};
+	}, []);
+
+	return (
+		<header id="header" className={styles.header}>
+			<nav className={`${styles.navigation} ${showSidebar ? styles.showSidebar : ""}`}>
+				<button className={styles.navbarToggle} onClick={toggleSidebar}>
+					<i className="fas fa-times"></i>
+				</button>
+				<ul className={styles.itemList}>
+					<li>
+						<a href="#about">About</a>
+					</li>
+					<li>
+						<a href="#projects">Projects</a>
+					</li>
+					<li>
+						<a href="#contact">Contact</a>
+					</li>
+					<li>
+						<a href="assets/NicholasTanryo.pdf" download>
+							Download CV
+						</a>
+					</li>
+				</ul>
+				{/* <div className={styles.logoContainer}>
+					<img src="logo512.png" />
+				</div> */}
+			</nav>
+			<button className={styles.navbarToggle} onClick={toggleSidebar}>
+				<i className="fas fa-bars"></i>
+			</button>
+		</header>
+	);
 }
+
+export default Header;
