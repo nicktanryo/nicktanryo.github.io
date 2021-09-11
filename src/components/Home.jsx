@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.scss";
 import KUTE from "kute.js";
 
 export const SOCIAL_GITHUB = "https://github.com/nicktanryo";
-const SOCIAL_LINKEDIN = "https://www.linkedin.com/in/nicholas-tanryo-bb6b5219a/";
+const SOCIAL_LINKEDIN = "https://www.linkedin.com/in/nicholas-tanryo/";
 const SOCIAL_FACEBOOK = "https://www.facebook.com/nicktanryo/";
 
 function Home() {
